@@ -36,4 +36,8 @@
 								</tbody>
 							</table>
 					</div>
+
+					<div>
+						{{  $data->render() }}
+					</div>
 					@stop

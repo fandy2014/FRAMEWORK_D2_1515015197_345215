@@ -11,7 +11,7 @@ class penggunaController extends Controller
 {
     public function awal()
     {
-    	return view('pengguna.awal', ['data'=>pengguna::all()]);
+    	return view('pengguna.awal', ['data'=>pengguna::paginate(5)]);
     }
     public function tambah()
     {
@@ -19,6 +19,10 @@ class penggunaController extends Controller
     }
     public function simpan(Request $input)
     {
+		$this->validate($input,[
+		'username='=>'required',
+		'password'=>'required',
+		]);
       $pengguna = new pengguna;
       $pengguna->username = $input->username;
       $pengguna->password = $input->password;
